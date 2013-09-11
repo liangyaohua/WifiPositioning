@@ -7,6 +7,8 @@ import java.util.List;
 import org.pi4.locutil.io.TraceGenerator;
 import org.pi4.locutil.trace.Parser;
 import org.pi4.locutil.trace.TraceEntry;
+import org.pi4.locutil.MACAddress;
+import org.pi4.locutil.trace.macfilter.MacFilterExplizit;
 
 /**
  * Example of how to use LocUtil
@@ -31,6 +33,24 @@ public class LocUtilExample {
 		File onlineFile = new File(onlinePath);
 		Parser onlineParser = new Parser(onlineFile);
 		System.out.println("Online File: " + onlineFile.getAbsoluteFile());
+
+		MacFilterExplizit certifiedAP = new MacFilterExplizit();
+
+		// Keep only known access points (yellow dots on the map ; cf. file MU.AP.positions)
+		certifiedAP.add(MACAddress.parse("00:14:BF:B1:7C:54"));
+		certifiedAP.add(MACAddress.parse("00:16:B6:B7:5D:8F"));
+		certifiedAP.add(MACAddress.parse("00:14:BF:B1:7C:57"));
+		certifiedAP.add(MACAddress.parse("00:14:BF:B1:97:8D"));
+		certifiedAP.add(MACAddress.parse("00:16:B6:B7:5D:9B"));
+		certifiedAP.add(MACAddress.parse("00:14:6C:62:CA:A4"));
+		certifiedAP.add(MACAddress.parse("00:14:BF:3B:C7:C6"));
+		certifiedAP.add(MACAddress.parse("00:14:BF:B1:97:8A"));
+		certifiedAP.add(MACAddress.parse("00:14:BF:B1:97:81"));
+		certifiedAP.add(MACAddress.parse("00:16:B6:B7:5D:8C"));
+		certifiedAP.add(MACAddress.parse("00:11:88:28:5E:E0"));
+
+		offlineParser.setMacFilter(certifiedAP);
+		onlineParser.setMacFilter(certifiedAP);
 		
 		//Construct trace generator
 		TraceGenerator tg;
