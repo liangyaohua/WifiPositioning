@@ -22,19 +22,20 @@ public class MedianAccuracyMos {
 			System.out.println("onlineSize = " + onlineSize);
 			ModelkNN modelkNN = new ModelkNN(3,false,25,onlineSize);
 			Vector<Double> medians = new Vector<Double>();
+			System.out.println("Starting...");
 			for(int n =0;n<100;n++) {
 				
 				if(n % 5 == 0)
 				{
 					System.setOut(stdOut);
-					System.out.println("run number " + n);
+					System.out.println("Accuracy experiment #" + n);
 				}
 				
 				modelkNN.generateTrace();
 				modelkNN.model();
 				medians.add(Statistics.median(modelkNN.ErrorDistances));
 			}
-			
+			System.out.println("End");
 			System.setOut(fileOut);
 			System.out.println(onlineSize + " " + Statistics.avg(medians));
 		}

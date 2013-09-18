@@ -22,19 +22,20 @@ public class MedianAccuracyFk {
 			System.out.println("k = " + k);
 			FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(k,false,25,5);
 			Vector<Double> medians = new Vector<Double>();
+			System.out.println("Starting...");
 			for(int n =0;n<100;n++) {
 				
 				if(n % 5 == 0)
 				{
 					System.setOut(stdOut);
-					System.out.println("run number " + n);
+					System.out.println("Accuracy experiment #" + n);
 				}
 				
 				fingerPrintingkNN.generateTrace();
 				fingerPrintingkNN.fingerprint();
 				medians.add(Statistics.median(fingerPrintingkNN.ErrorDistances));
 			}
-			
+			System.out.println("End");
 			System.setOut(fileOut);
 			System.out.println(k + " " + Statistics.avg(medians));
 		}
