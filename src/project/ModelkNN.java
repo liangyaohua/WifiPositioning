@@ -19,26 +19,22 @@ public class ModelkNN {
 		if(args.length == 1)
 		{
 			ModelkNN modelkNN = new ModelkNN(Integer.parseInt(args[0]), true, 25, 5);
-			System.out.println("Starting...");
 			for(int n = 0; n < 100; n++)
 			{
 				modelkNN.generateTrace();
 				modelkNN.model();
 				System.out.println("Accuracy experiment #"+n+" done");
 			}
-			System.out.println("End");
 		}
 		else if(args.length == 4)
 		{
 			ModelkNN modelkNN = new ModelkNN(Integer.parseInt(args[0]), true, 25, 5,Double.parseDouble(args[1]),Double.parseDouble(args[2]),Double.parseDouble(args[3]));
-			System.out.println("Starting...");
 			for(int n = 1; n <= 100; n++)
 			{
 				modelkNN.generateTrace();
 				modelkNN.model();
 				System.out.println("Accuracy experiment #"+n+" done");
 			}
-			System.out.println("End");
 		}
 		else
 		{

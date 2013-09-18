@@ -17,14 +17,12 @@ public class FingerPrintingkNN {
 		if(args.length > 0)
 		{
 			FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(Integer.parseInt(args[0]),true, 25, 5);
-			System.out.println("Starting...");
 			for(int n = 0; n < 100; n++) {
 
 				fingerPrintingkNN.generateTrace();
 				fingerPrintingkNN.fingerprint();
 				System.out.println("Accuracy experiment #"+n+" done");
 			}
-			System.out.println("End");
 		}
 		else
 		{

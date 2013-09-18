@@ -19,7 +19,6 @@ public class MedianAccuracyFk {
 		}
 		PrintStream stdOut = System.out; 
 		PrintStream fileOut = new PrintStream(f);
-		System.out.println("Starting...");
 		
 		for(int k = 1; k <= 5; k++)
 		{
@@ -44,7 +43,6 @@ public class MedianAccuracyFk {
 			System.setOut(fileOut);
 			System.out.println(k + " " + Statistics.avg(medians));
 		}
-		System.out.println("End");
 	}
 
 }

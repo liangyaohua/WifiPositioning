@@ -19,7 +19,6 @@ public class MedianAccuracyFos {
 		}
 		PrintStream stdOut = System.out; 
 		PrintStream fileOut = new PrintStream(f);
-		System.out.println("Starting...");
 		
 		for(int onlineSize = 1; onlineSize <= 10; onlineSize++)
 		{
@@ -44,7 +43,6 @@ public class MedianAccuracyFos {
 			System.setOut(fileOut);
 			System.out.println(onlineSize + " " + Statistics.avg(medians));
 		}
-		System.out.println("End");
 	}
 
 }

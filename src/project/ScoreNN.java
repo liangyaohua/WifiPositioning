@@ -14,8 +14,12 @@ public class ScoreNN {
 
 	public static void main(String[] args) 
 	{
-		ScoreNN scoreReader = new ScoreNN(args[0]);
-		scoreReader.scoreIt();
+		if(args.length > 0) {
+			ScoreNN scoreReader = new ScoreNN(args[0]);
+			scoreReader.scoreIt();
+		} else {
+			System.out.println("Usage : ScoreNN filename");
+		}
 	}
 
 	public ScoreNN(String inFileName)

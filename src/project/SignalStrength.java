@@ -50,7 +50,7 @@ public class SignalStrength {
 		FileOutputStream f = null;
 		
 		try {
-			f = new FileOutputStream("SigalStrength" + mac.toString().replaceAll(":", ".") + ".txt", true);
+			f = new FileOutputStream("SignalStrengthOf" + mac.toString().replaceAll(":", ".") + ".txt", true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
