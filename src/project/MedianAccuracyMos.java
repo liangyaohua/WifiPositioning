@@ -18,13 +18,14 @@ public class MedianAccuracyMos {
 		}
 		PrintStream stdOut = System.out; 
 		PrintStream fileOut = new PrintStream(f);
+		System.out.println("Starting...");
 		for(int onlineSize = 1; onlineSize <= 10; onlineSize++)
 		{
 			System.setOut(stdOut);
 			System.out.println("onlineSize = " + onlineSize);
 			ModelkNN modelkNN = new ModelkNN(3,false,25,onlineSize);
 			Vector<Double> medians = new Vector<Double>();
-			System.out.println("Starting...");
+			
 			for(int n =0;n<100;n++) {
 				
 				if(n % 5 == 0)
@@ -41,6 +42,7 @@ public class MedianAccuracyMos {
 			System.setOut(fileOut);
 			System.out.println(onlineSize + " " + Statistics.avg(medians));
 		}
+		System.out.println("End");
 	}
 
 }

@@ -90,7 +90,7 @@ public class FingerPrintingkNN {
 		{
 			if(output){
 				//Print True position
-				System.out.print(posPair.first.getX() + "," + posPair.first.getY() + "," + posPair.first.getZ() + ";");
+				System.out.print(posPair.first.getX() + "," + posPair.first.getY() + "," + posPair.first.getZ() + "; ");
 				//Print Estimated position
 				System.out.println(posPair.second.getX() + "," + posPair.second.getY() + "," + posPair.second.getZ());
 			}

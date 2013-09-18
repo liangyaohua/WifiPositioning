@@ -2,7 +2,6 @@ package project;
 
 import org.pi4.locutil.trace.TraceEntry;
 
-
 public class EntryWrapper
 {
 	public EntryWrapper(TraceEntry t, double dis)

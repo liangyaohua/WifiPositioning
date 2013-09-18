@@ -18,13 +18,15 @@ public class MedianAccuracyFos {
 		}
 		PrintStream stdOut = System.out; 
 		PrintStream fileOut = new PrintStream(f);
+		System.out.println("Starting...");
+		
 		for(int onlineSize = 1; onlineSize <= 10; onlineSize++)
 		{
 			System.setOut(stdOut);
 			System.out.println("onlineSize = " + onlineSize);
 			FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(3,false,25,onlineSize);
 			Vector<Double> medians = new Vector<Double>();
-			System.out.println("Starting...");
+			
 			for(int n =0;n<100;n++) {
 				
 				if(n % 5 == 0)
@@ -37,10 +39,11 @@ public class MedianAccuracyFos {
 				fingerPrintingkNN.fingerprint();
 				medians.add(Statistics.median(fingerPrintingkNN.ErrorDistances));
 			}
-			System.out.println("End");
+			
 			System.setOut(fileOut);
 			System.out.println(onlineSize + " " + Statistics.avg(medians));
 		}
+		System.out.println("End");
 	}
 
 }

@@ -7,7 +7,6 @@ import org.pi4.locutil.MACAddress;
 import org.pi4.locutil.Statistics;
 import org.pi4.locutil.trace.TraceEntry;
 
-
 public class NearestNeighbors {
 
 	//Returns pairs of true and estimated positions based on k nearest neighbors
