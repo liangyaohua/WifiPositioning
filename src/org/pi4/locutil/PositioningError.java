@@ -23,9 +23,13 @@
 
 package org.pi4.locutil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PositioningError implements Comparable<PositioningError> {
 	private GeoPosition realPosition;
 	private GeoPosition estimatedPosition;
+	private Map<String, String> attributes;
 	
 	public PositioningError(GeoPosition realPosition, GeoPosition estimatedPosition) {
 		this.realPosition = realPosition;
@@ -44,6 +48,27 @@ public class PositioningError implements Comparable<PositioningError> {
 		return realPosition.distance(estimatedPosition);
 	}
 	
+	/**
+	 * Can set an attribut if extra information has to be associated with the positionerror
+	 * @param key to store the information under.
+	 * @param value the information
+	 */
+	public void setAttribute(String key, String value) {
+		if (attributes == null) {
+			attributes = new HashMap<String,String>();
+		}
+		attributes.put(key,value);
+	}
+	
+	/**
+	 * Get extra information
+	 * @param key under which information is stored.
+	 * @return
+	 */
+	public String getAttribute(String key) {
+		return this.attributes.get(key);
+	}
+
 	public int compareTo(PositioningError pe) {
 		if (pe.getPositioningError() > getPositioningError()) return -1;
 		if (pe.getPositioningError() < getPositioningError()) return 1;

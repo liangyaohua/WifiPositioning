@@ -32,7 +32,7 @@ import org.pi4.locutil.GeoPosition;
  * @author king
  *
  */
-public class PositionFilterGrid implements PositionFilter {
+public class PositionFilterGrid extends PositionFilter {
 	double gridDimension = -1;
 	GeoPosition startPos = new GeoPosition();
 

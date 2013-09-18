@@ -35,7 +35,7 @@ import org.pi4.locutil.GeoPosition;
  * @author king
  *
  */
-public class PositionFilterExplizit implements PositionFilter {
+public class PositionFilterExplizit extends PositionFilter {
 	HashSet<GeoPosition> explizitPositions;
 	
 	public PositionFilterExplizit() {

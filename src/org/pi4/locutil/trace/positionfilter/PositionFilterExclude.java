@@ -35,7 +35,7 @@ import org.pi4.locutil.GeoPosition;
  * @author king
  *
  */
-public class PositionFilterExclude implements PositionFilter {
+public class PositionFilterExclude extends PositionFilter {
 	HashSet<GeoPosition> excludedPositions;
 	
 	public PositionFilterExclude() {

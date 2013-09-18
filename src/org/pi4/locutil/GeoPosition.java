@@ -34,7 +34,7 @@ import java.util.StringTokenizer;
  * @author koelsch
  */
 
-public class GeoPosition implements Comparable<GeoPosition>, Serializable {
+public class GeoPosition implements Comparable, Serializable {
 
 	private static final long serialVersionUID = 7318226428301060903L;
 	double[] coords;
@@ -308,7 +308,13 @@ public class GeoPosition implements Comparable<GeoPosition>, Serializable {
     	return "(" + coords[0] + ", " + coords[1] + ", " + coords[2] + ")";
     }
     
-    public int compareTo(GeoPosition g) {
+    public int compareTo(Object o) {
+    	if (o == null)
+			return 1;
+		if (o.getClass() != this.getClass())
+			return 1;
+		
+    	GeoPosition g = (GeoPosition)o;
     	if (this.getX() < g.getX()) {
     		return -1;
     	} else if (this.getX() > g.getX()) {
@@ -336,7 +342,16 @@ public class GeoPosition implements Comparable<GeoPosition>, Serializable {
     	}
     }
     
-    public int compare(GeoPosition g1, GeoPosition g2) {
+    public int compare(Object o1, Object o2) {
+    	if (o1 == null)
+    		return -1;
+    	if (o2 == null)
+			return 1;
+		if (o1.getClass() != o2.getClass())
+			return 1;
+		
+    	GeoPosition g1 = (GeoPosition)o1;
+    	GeoPosition g2 = (GeoPosition)o2;
     	if (g1.getX() < g2.getX()) {
     		return -1;
     	} else if (g1.getX() > g2.getX()) {

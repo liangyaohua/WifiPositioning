@@ -29,7 +29,7 @@ import java.util.Vector;
 
 import org.pi4.locutil.MACAddress;
 
-public class MacFilterOr implements MacFilter {
+public class MacFilterOr extends MacFilter {
 	Vector<MacFilter> macFilters;
 	
 	public MacFilterOr() {

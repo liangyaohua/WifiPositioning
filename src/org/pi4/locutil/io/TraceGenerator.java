@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+import org.pi4.locutil.Configuration;
 import org.pi4.locutil.GeoPosition;
 import org.pi4.locutil.MACAddress;
 import org.pi4.locutil.Random;

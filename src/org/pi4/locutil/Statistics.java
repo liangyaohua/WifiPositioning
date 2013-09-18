@@ -116,7 +116,7 @@ public class Statistics {
 	 * @param values	the positions
 	 * @return	the averaged position
 	 */
-	public static GeoPosition avgPosition(List<GeoPosition> values) {
+	public static GeoPosition avg(List<GeoPosition> values) {
 		int k = values.size();
 		if (k < 1)
 			throw new IllegalArgumentException("Length must be >= 1");

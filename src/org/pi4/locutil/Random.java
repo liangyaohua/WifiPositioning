@@ -26,8 +26,10 @@ package org.pi4.locutil;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import org.pi4.locutil.Configuration;
+
 /**
- * This class is a wrapper class for the JDK Random class. The idea is to provide a loceva specific
+ * This class is a rapper class for the JDK Random class. The idea is to provide a loceva specific
  * Random class that is configured during loceva startup. This class should be used instead of the
  * JDK Random class to make sure the loceva specific configuration is applied.
  *  
@@ -43,10 +45,15 @@ public class Random {
 			randomizer = SecureRandom.getInstance("SHA1PRNG");
 		} catch (NoSuchAlgorithmException nsae) {
 			System.out.println(nsae.getMessage());
-		}		
-		byte temp[] = randomizer.generateSeed(4); 
-		seed = ((long)temp[0] << 24) + (temp[1] << 16) + (temp[2] << 8) + temp[0];
-		randomizer.setSeed(seed);
+		}
+		if (Configuration.getProperty("Random.seed") != null) {
+			seed = Long.parseLong(Configuration.getProperty("Random.seed"));
+			randomizer.setSeed(seed);
+		} else {
+			byte temp[] = randomizer.generateSeed(4); 
+			seed = ((long)temp[0] << 24) + (temp[1] << 16) + (temp[2] << 8) + temp[0];
+			randomizer.setSeed(seed);
+		}
 	}
 	
 	private Random() {

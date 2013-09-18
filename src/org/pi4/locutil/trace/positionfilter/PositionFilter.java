@@ -33,7 +33,16 @@ import org.pi4.locutil.GeoPosition;
  * @author king
  *
  */
-public interface PositionFilter {
-	public boolean contains(GeoPosition pos);	
-	public boolean isEmpty();
+public class PositionFilter {
+	public boolean contains(GeoPosition pos) {
+		return true;
+	}
+	
+	public boolean isEmpty() {
+		return true;
+	}
+	
+	public String toString() {
+		return new String("Empty");
+	}
 }

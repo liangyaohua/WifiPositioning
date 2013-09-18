@@ -35,7 +35,6 @@ import org.pi4.locutil.trace.macfilter.MacFilter;
 import org.pi4.locutil.trace.macfilter.MacFilterExplizit;
 import org.pi4.locutil.trace.orientationfilter.OrientationFilter;
 import org.pi4.locutil.trace.positionfilter.PositionFilter;
-import org.pi4.locutil.trace.positionfilter.PositionFilterAllowAll;
 
 /**
  * Parser.
@@ -61,7 +60,7 @@ public class Parser {
 		this.file = file;
 		mf = new MacFilterExplizit();
 		of = new OrientationFilter();
-		psf = new PositionFilterAllowAll();
+		psf = new PositionFilter();
 	}
 	
 	public void setSkipAdHocNodes(boolean skip) {
@@ -105,7 +104,7 @@ public class Parser {
 	}
 	
 	public void resetPositionFilter() {
-		this.psf = new PositionFilterAllowAll();
+		this.psf = new PositionFilter();
 	}
 	
 	public void setPrecision(double precision) {
@@ -188,6 +187,12 @@ public class Parser {
 			}
 		} finally {
 			in.close();
+		}
+		//MBK Debug code
+		for (TraceEntry entry: list) {
+			if (entry.getSignalStrengthSamples().size() == 0) {
+				System.out.println("Found it! : " + entry.getTimestamp());
+			}
 		}
 		return list;
 	}

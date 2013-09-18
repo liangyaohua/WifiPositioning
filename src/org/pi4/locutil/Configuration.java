@@ -21,31 +21,41 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-package org.pi4.locutil.trace.macfilter;
+package org.pi4.locutil;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
-import org.pi4.locutil.MACAddress;
+/**
+ * Centrally stores all loceva configuration.
+ * 
+ * @author faerber
+ */
+public abstract class Configuration {
+	private static Properties properties;
+	
+	static {
+		properties = new Properties();
+	}
 
-public class MacFilter {
-	public boolean contains(MACAddress mac) {
-		return true;
+	/**
+	 * @see java.util.Properties#getProperty
+	 */
+	public static String getProperty(String key) {
+		return properties.getProperty(key);
 	}
 	
-	public boolean isEmpty() {
-		return true;
+	public static void setProperty(String key, String value) {
+		properties.setProperty(key, value);
 	}
 	
-	public String toString() {
-		return new String("Empty");
-	}
-	
-	public Set<MACAddress> getMacs() {
-		return new HashSet<MACAddress>();
-	}
-	
-	public void add(MACAddress mac) {
-		return;
+	public static void loadPropertyFile(File file) {
+		try {
+			if (file != null) properties.load(new FileInputStream(file)); 
+		} catch (IOException ioe) {
+			System.err.println("Property file " + file + " not found.");
+		}
 	}
 }

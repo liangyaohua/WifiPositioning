@@ -23,54 +23,66 @@
 
 package org.pi4.locutil.trace.macfilter;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Vector;
 
 import org.pi4.locutil.MACAddress;
+import org.pi4.locutil.Random;
 
-/**
- * This class filters mac addresses from access points accidentily stored in the trace file.
- * A list of well-known access points have to be stored inside this class and only this access
- * points will be returned by the parser (all unlisted access points will be removed).
- * 
- * @author king
- */
-public class MacFilterExplizit extends MacFilter {
-	protected HashSet<MACAddress> macs;
+public class MacFilterNOutOfExplizit extends MacFilterExplizit {
 	
-	public MacFilterExplizit() {
-		macs = new HashSet<MACAddress>();
-	}
+	int n = 0;
+	HashSet<MACAddress> selectedN;
 	
-	public void add(MACAddress mac) {
-		macs.add(mac);
+	public MacFilterNOutOfExplizit() {
+		selectedN = new HashSet<MACAddress>();
 	}
 	
 	public boolean contains(MACAddress mac) {
-		return macs.contains(mac);
+		return selectedN.contains(mac);
+	}
+	
+	public void setN(int n) {
+		this.n = n;
+	}
+	
+	public void selectNOutOfExplizit() {
+		if ((n != 0) && (macs.size() >= n)) {
+			selectedN = new HashSet<MACAddress>();
+			Vector<MACAddress> macsVector = new Vector<MACAddress>();
+			macsVector.addAll(macs);
+			for (int i = 0; i < n; ++i) {
+				MACAddress selected = macsVector.remove(Random.nextInt(macsVector.size()));
+				selectedN.add(selected);
+			}
+		} else {
+			throw new IllegalArgumentException("n is not inside valid bounderies.");
+		}
 	}
 	
 	public HashSet<MACAddress> getMacs() {
-		return macs;
+		return selectedN;
 	}
 	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("MacFilterExplizit: ");
-		if (macs.isEmpty()) {
+		sb.append("MacFilterNOutOfExplizit: ");
+		if (selectedN.isEmpty()) {
 			sb.append("Empty");
-		} else {
-			Iterator<MACAddress> it = macs.iterator();
-			while (it.hasNext()) {
-				MACAddress mac = it.next();
-				sb.append(mac);
-				if (it.hasNext())
-					sb.append(", ");
-			}
+		}
+		Iterator<MACAddress> it = selectedN.iterator();
+		while (it.hasNext()) {
+			MACAddress mac = it.next();
+			sb.append(mac);
+			if (it.hasNext())
+				sb.append(", ");
 		}
 		return sb.toString();
 	}
 	
 	public boolean isEmpty() {
-		return macs.isEmpty();
+		return selectedN.isEmpty();
 	}
+	
 }

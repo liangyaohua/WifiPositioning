@@ -32,7 +32,7 @@ import java.util.*;
  * @author king
  * @author faerber
  */
-public class MACAddress implements Comparable<MACAddress>, Serializable {
+public class MACAddress implements Comparable, Serializable {
 	
 	private static final long serialVersionUID = -8815095335593354738L;
 
@@ -91,29 +91,43 @@ public class MACAddress implements Comparable<MACAddress>, Serializable {
 		return hash;
 	}
 	
-	public int compareTo(MACAddress o) {	
-		MACAddress mac2 = (MACAddress)o;
-		for (int i = 0; i < macAddress.length; i++) {
-			if (macAddress[i] > mac2.macAddress[i]) {
-				return 1;
-			} else if (macAddress[i] < mac2.macAddress[i]) {
-				return -1;
+	public int compareTo(Object o) {
+		if (o == null) {
+			return 1;
+		} else if (o.getClass() != this.getClass()) {
+			return 1;
+		} else {
+			MACAddress mac2 = (MACAddress)o;
+			for (int i = 0; i < macAddress.length; i++) {
+				if (macAddress[i] > mac2.macAddress[i]) {
+					return 1;
+				} else if (macAddress[i] < mac2.macAddress[i]) {
+					return -1;
+				}
 			}
+			return 0;
 		}
-		return 0;
 	}
 	
-	public int compare(MACAddress o1, MACAddress o2) {
-		MACAddress mac1 = (MACAddress)o1;
-		MACAddress mac2 = (MACAddress)o2;
-		for (int i = 0; i < mac1.macAddress.length; i++) {
-			if (mac1.macAddress[i] > mac2.macAddress[i]) {
-				return 1;
-			} else if (mac1.macAddress[i] < mac2.macAddress[i]) {
-				return -1;
+	public int compare(Object o1, Object o2) {
+		if (o2 == null) {
+			return 1;
+		} else if (o1 == null) {
+			return -1;
+		} else if (o1.getClass() != o2.getClass()) {
+			return 0;
+		} else {
+			MACAddress mac1 = (MACAddress)o1;
+			MACAddress mac2 = (MACAddress)o2;
+			for (int i = 0; i < mac1.macAddress.length; i++) {
+				if (mac1.macAddress[i] > mac2.macAddress[i]) {
+					return 1;
+				} else if (mac1.macAddress[i] < mac2.macAddress[i]) {
+					return -1;
+				}
 			}
+			return 0;
 		}
-		return 0;
 	}
     
     /**
