@@ -21,7 +21,7 @@ public class ScoreNN {
 
 		try {
 			sc = new Scanner(new File(inFileName));
-			fos = new FileOutputStream("scored_" + inFileName);
+			fos = new FileOutputStream("Scored_" + inFileName);
 			pw = new PrintStream(fos);
 			System.setOut(pw);
 		} catch (FileNotFoundException e) {

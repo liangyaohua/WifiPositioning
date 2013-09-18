@@ -15,16 +15,16 @@ public class FingerPrintingkNN {
 		if(args.length > 0)
 		{
 			FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(Integer.parseInt(args[0]),true, 25, 5);
-			for(int n =0;n<100;n++) {
+			for(int n=1;n<=100;n++) {
 
 				fingerPrintingkNN.generateTrace();
 				fingerPrintingkNN.fingerprint();
-				System.out.println(n+1);
+				System.out.println("Accuracy experiment #"+n+" done");
 			}
 		}
 		else
 		{
-			System.out.println("Specify k");
+			System.out.println("Usage : FingerPrintkNN k");
 		}
 
 	}
@@ -39,7 +39,7 @@ public class FingerPrintingkNN {
 
 		try {
 			if(output)
-				f = new FileOutputStream("fingerPrinting" + k + "NNresults.txt", true);
+				f = new FileOutputStream("FingerPrinting" + k + "NN.txt", true);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

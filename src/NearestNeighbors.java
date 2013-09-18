@@ -11,7 +11,7 @@ public class NearestNeighbors {
 	//Returns pairs of true and estimated positions based on k nearest neighbors
 	public static Vector<Pair<GeoPosition,GeoPosition>> getEstimatedPositions(List<TraceEntry> onlineTrace, List<TraceEntry> offlineTrace, int k)
 	{
-		LongestDistanceComparator comparator = new LongestDistanceComparator();
+		DistanceComparator comparator = new DistanceComparator();
 		Vector<Pair<GeoPosition,GeoPosition>> positionPairs = new Vector<Pair<GeoPosition,GeoPosition>>();
 		
 		for(TraceEntry entry: onlineTrace) {

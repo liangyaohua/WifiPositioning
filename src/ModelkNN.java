@@ -29,16 +29,16 @@ public class ModelkNN {
 		{
 			ModelkNN modelkNN = new ModelkNN(Integer.parseInt(args[0]), true, 25, 5,Double.parseDouble(args[1]),Double.parseDouble(args[2]),Double.parseDouble(args[3]));
 
-			for(int n = 0; n < 100; n++)
+			for(int n = 1; n <= 100; n++)
 			{
 				modelkNN.generateTrace();
 				modelkNN.model();
-				System.out.println(n+1);
+				System.out.println("Accuracy experiment #"+n+" done");
 			}
 		}
 		else
 		{
-			System.out.println("Specify k and if you choose also d0, p(d0) and n");
+			System.out.println("Usage : ModelkNN k | (optional) d0 p(d0) n");
 		}
 
 	}
@@ -62,7 +62,7 @@ public class ModelkNN {
 
 		try {
 			if(output)
-				f = new FileOutputStream("model"+k+"NNresults.txt", true);
+				f = new FileOutputStream("Model"+k+"NN.txt", true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
