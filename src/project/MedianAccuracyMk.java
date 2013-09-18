@@ -1,26 +1,28 @@
+package project;
+
 import java.io.*;
 import java.util.*;
 
 import org.pi4.locutil.Statistics;
 
-public class MedianAccuracyMos {
+public class MedianAccuracyMk {
 	
 	public static void main(String[] args) {
 
 		FileOutputStream f = null;
 		try {
-				f = new FileOutputStream("MedianAccuracyMos.txt", false);
+				f = new FileOutputStream("MedianAccuracyMk.txt", false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		PrintStream stdOut = System.out; 
 		PrintStream fileOut = new PrintStream(f);
-		for(int onlineSize = 1; onlineSize <= 10; onlineSize++)
+		for(int k = 1; k <= 5; k++)
 		{
 			System.setOut(stdOut);
-			System.out.println("onlineSize = " + onlineSize);
-			ModelkNN modelkNN = new ModelkNN(3,false,25,onlineSize);
+			System.out.println("k = " + k);
+			ModelkNN modelkNN = new ModelkNN(k,false,25,5);
 			Vector<Double> medians = new Vector<Double>();
 			System.out.println("Starting...");
 			for(int n =0;n<100;n++) {
@@ -37,7 +39,7 @@ public class MedianAccuracyMos {
 			}
 			System.out.println("End");
 			System.setOut(fileOut);
-			System.out.println(onlineSize + " " + Statistics.avg(medians));
+			System.out.println(k + " " + Statistics.avg(medians));
 		}
 	}
 

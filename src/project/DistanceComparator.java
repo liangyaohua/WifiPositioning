@@ -1,3 +1,5 @@
+package project;
+
 import java.util.Comparator;
 
 class DistanceComparator implements Comparator<EntryWrapper> {
