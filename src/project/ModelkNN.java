@@ -20,7 +20,7 @@ public class ModelkNN {
 		{
 			ModelkNN modelkNN = new ModelkNN(Integer.parseInt(args[0]), true, 25, 5);
 			System.out.println("Starting...");
-			for(int n = 1; n <= 100; n++)
+			for(int n = 0; n < 100; n++)
 			{
 				modelkNN.generateTrace();
 				modelkNN.model();

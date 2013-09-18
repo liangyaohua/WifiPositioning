@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import org.pi4.locutil.GeoPosition;
 import org.pi4.locutil.MACAddress;
 
+// Math functions
 public class Misc {
 
 	public static double getEuclidianDistance(double x1, double x2, double y1, double y2, double z1, double z2) 

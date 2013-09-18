@@ -5,6 +5,7 @@ import java.util.*;
 
 import org.pi4.locutil.Statistics;
 
+//Median accuracy for ModelkNN online samples size = 1-10
 public class MedianAccuracyMos {
 	
 	public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class MedianAccuracyMos {
 			ModelkNN modelkNN = new ModelkNN(3,false,25,onlineSize);
 			Vector<Double> medians = new Vector<Double>();
 			
-			for(int n =0;n<100;n++) {
+			for(int n = 0; n < 100; n++) {
 				
 				if(n % 5 == 0)
 				{
@@ -38,7 +39,7 @@ public class MedianAccuracyMos {
 				modelkNN.model();
 				medians.add(Statistics.median(modelkNN.ErrorDistances));
 			}
-			System.out.println("End");
+			
 			System.setOut(fileOut);
 			System.out.println(onlineSize + " " + Statistics.avg(medians));
 		}

@@ -6,7 +6,7 @@ public class FingerPrintingNN {
 
 		FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(1,true,25,5);
 		System.out.println("Starting...");
-		for(int n=1;n<=100;n++) {
+		for(int n = 0; n < 100; n++) {
 			
 			fingerPrintingkNN.generateTrace();
 			fingerPrintingkNN.fingerprint();

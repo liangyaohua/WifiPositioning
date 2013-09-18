@@ -5,6 +5,7 @@ import java.util.*;
 
 import org.pi4.locutil.Statistics;
 
+// Median accuracy for FingerPrintingkNN k = 1-5
 public class MedianAccuracyFk {
 	
 	public static void main(String[] args) {
@@ -27,9 +28,9 @@ public class MedianAccuracyFk {
 			FingerPrintingkNN fingerPrintingkNN = new FingerPrintingkNN(k,false,25,5);
 			Vector<Double> medians = new Vector<Double>();
 			
-			for(int n =0;n<100;n++) {
+			for(int n = 0; n < 100; n++) {
 				
-				if(n % 5 == 0)
+				if(n % 10 == 0)
 				{
 					System.setOut(stdOut);
 					System.out.println("Accuracy experiment #" + n);
