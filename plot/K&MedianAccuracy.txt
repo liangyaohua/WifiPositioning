@@ -1,0 +1,12 @@
+set style data boxes
+set boxwidth 0.5
+set xlabel "k"
+set ylabel "Median accuracy [m]"
+set term x11 // for mac
+set xtics nomirror
+set mytics 2
+set ytics 0.1
+set xrange [0:6]
+set yrange [2.6:4.8]
+set pointsize .3
+plot 'MedianAccuracyMk.txt' using 1:2 ti 'Model based' w boxes fs solid 1,'MedianAccuracyFk.txt' using 1:2 ti 'Empirical based' w boxes fs solid 1

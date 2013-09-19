@@ -1,0 +1,8 @@
+set style data lines
+set xlabel "Difference from true position [m]"
+set ylabel "Number of estimates"
+set term x11
+set xtics nomirror
+set ytics nomirror
+set xrange [0:12]
+plot 'Scored_FingerPrinting1NN.txt' using 1:2 ti 'Fingerprinting 1NN','Scored_FingerPrinting3NN.txt' using 1:2 ti 'Fingerprinting 3NN','Scored_model1NN.txt' using 1:2 ti 'Model 1NN','Scored_model3NN.txt' using 1:2 ti 'Model 3NN'

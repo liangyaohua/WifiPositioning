@@ -1,0 +1,12 @@
+set style data points
+set xlabel "Distance to AccessPoint [m]"
+set ylabel "Signal strength of AccessPoint [dBm]"
+set term x11
+set xtics nomirror
+set ytics nomirror
+set xrange [0:65]
+set yrange [-100:-30]
+set pointsize .3
+plot 'SignalStrengthOf00.14.BF.B1.7C.54.txt' using 1:2 ti '00:14:BF:B1:7C:54' lt rgb "purple",'SignalStrengthOf00.14.BF.B1.97.8A.txt' using 1:2 ti '00:14:BF:B1:97:8A' lt rgb "brown",'SignalStrengthOf00.16.B6.B7.5D.8F.txt' using 1:2 ti '00:16:B6:B7:5D:8F' lt rgb "green"
+
+same for the other APs
